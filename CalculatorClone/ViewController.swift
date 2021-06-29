@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         return label
     }()
     
-    var button: UIButton = {
+    var acButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.backgroundColor = .lightGray
         button.setTitle("AC", for: .normal)
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
     
     private func setupSubviews() {
         addNumberLabel()
-        addButton()
+        addACButton()
         addNumberButton()
     }
     
@@ -56,15 +56,16 @@ class ViewController: UIViewController {
         ])
     }
     
-    private func addButton() {
-        self.view.addSubview(button)
-        button.layer.cornerRadius = 25
+    private func addACButton() {
+        self.view.addSubview(acButton)
+        acButton.layer.cornerRadius = 25
+        acButton.addTarget(self, action: #selector(self.acButtonTapped), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
-            button.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
-            button.topAnchor.constraint(equalTo: self.numberLabel.bottomAnchor, constant: 20),
-            button.heightAnchor.constraint(equalToConstant: 50),
-            button.widthAnchor.constraint(equalToConstant: 50)
+            acButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
+            acButton.topAnchor.constraint(equalTo: self.numberLabel.bottomAnchor, constant: 20),
+            acButton.heightAnchor.constraint(equalToConstant: 50),
+            acButton.widthAnchor.constraint(equalToConstant: 50)
         ])
     }
     
@@ -76,10 +77,14 @@ class ViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             numberOne.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
-            numberOne.topAnchor.constraint(equalTo: self.button.bottomAnchor, constant: 16),
+            numberOne.topAnchor.constraint(equalTo: self.acButton.bottomAnchor, constant: 16),
             numberOne.heightAnchor.constraint(equalToConstant: 50),
             numberOne.widthAnchor.constraint(equalToConstant: 50)
         ])
+    }
+    
+    @objc func acButtonTapped(sender: UIButton) {
+        numberLabel.text = "0"
     }
     
     @objc func numberButtonTapped(sender: UIButton) {
