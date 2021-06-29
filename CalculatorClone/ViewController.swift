@@ -30,16 +30,6 @@ class ViewController: UIViewController {
         return button
     }()
     
-    var numberButton: UIButton = {
-        let button = UIButton(frame: .zero)
-        button.backgroundColor = .lightGray
-        button.setTitle("1", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        return button
-    }()
-    
     override func viewWillAppear(_ animated: Bool) {
         self.view.backgroundColor = UIColor.black
     }
@@ -92,9 +82,9 @@ class ViewController: UIViewController {
         ])
     }
     
-    @objc func numberButtonTapped() {
+    @objc func numberButtonTapped(sender: UIButton) {
         guard let currentNumberLabel = numberLabel.text,
-              let numberPressed = numberButton.currentTitle,
+              let numberPressed = sender.currentTitle,
               currentNumberLabel.count <= 8 else {
             return
         }
