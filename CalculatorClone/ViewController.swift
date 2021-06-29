@@ -79,15 +79,16 @@ class ViewController: UIViewController {
     }
     
     private func addNumberButton() {
-        self.view.addSubview(numberButton)
-        numberButton.addTarget(self, action: #selector(self.numberButtonTapped), for: .touchUpInside)
-        numberButton.layer.cornerRadius = 25
+        let numberOne = NumberButton(frame: .zero)
+        numberOne.number = 1
+        self.view.addSubview(numberOne)
+        numberOne.addTarget(self, action: #selector(self.numberButtonTapped), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
-            numberButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
-            numberButton.topAnchor.constraint(equalTo: self.button.bottomAnchor, constant: 16),
-            numberButton.heightAnchor.constraint(equalToConstant: 50),
-            numberButton.widthAnchor.constraint(equalToConstant: 50)
+            numberOne.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
+            numberOne.topAnchor.constraint(equalTo: self.button.bottomAnchor, constant: 16),
+            numberOne.heightAnchor.constraint(equalToConstant: 50),
+            numberOne.widthAnchor.constraint(equalToConstant: 50)
         ])
     }
     
