@@ -30,6 +30,16 @@ class ViewController: UIViewController {
         return button
     }()
     
+    var numberButton: UIButton = {
+        let button = UIButton(frame: .zero)
+        button.backgroundColor = .lightGray
+        button.setTitle("1", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        return button
+    }()
+    
     override func viewWillAppear(_ animated: Bool) {
         self.view.backgroundColor = UIColor.black
     }
@@ -43,6 +53,7 @@ class ViewController: UIViewController {
     private func setupSubviews() {
         addNumberLabel()
         addButton()
+        addNumberButton()
     }
     
     private func addNumberLabel() {
@@ -65,5 +76,30 @@ class ViewController: UIViewController {
             button.heightAnchor.constraint(equalToConstant: 50),
             button.widthAnchor.constraint(equalToConstant: 50)
         ])
+    }
+    
+    private func addNumberButton() {
+        self.view.addSubview(numberButton)
+        numberButton.addTarget(self, action: #selector(self.numberButtonTapped), for: .touchUpInside)
+        numberButton.layer.cornerRadius = 25
+        
+        NSLayoutConstraint.activate([
+            numberButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
+            numberButton.topAnchor.constraint(equalTo: self.button.bottomAnchor, constant: 16),
+            numberButton.heightAnchor.constraint(equalToConstant: 50),
+            numberButton.widthAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+    
+    @objc func numberButtonTapped() {
+        guard let currentNumberLabel = numberLabel.text,
+              let numberPressed = numberButton.currentTitle else {
+            return
+        }
+        if currentNumberLabel == "0" {
+            numberLabel.text = numberPressed
+        } else {
+            numberLabel.text = "\(currentNumberLabel)\(numberPressed)"
+        }
     }
 }
