@@ -93,7 +93,8 @@ class ViewController: UIViewController {
     
     @objc func numberButtonTapped() {
         guard let currentNumberLabel = numberLabel.text,
-              let numberPressed = numberButton.currentTitle else {
+              let numberPressed = numberButton.currentTitle,
+              currentNumberLabel.count <= 8 else {
             return
         }
         if currentNumberLabel == "0" {
