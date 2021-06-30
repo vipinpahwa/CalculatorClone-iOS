@@ -30,6 +30,16 @@ class ViewController: UIViewController {
         return button
     }()
     
+    var firstRow: UIStackView = {
+        let row = UIStackView(frame: .zero)
+        row.translatesAutoresizingMaskIntoConstraints = false
+        row.axis = .horizontal
+        row.distribution = .fillEqually
+        row.spacing = 8
+        
+        return row
+    }()
+    
     override func viewWillAppear(_ animated: Bool) {
         self.view.backgroundColor = UIColor.black
     }
@@ -43,7 +53,7 @@ class ViewController: UIViewController {
     private func setupSubviews() {
         addNumberLabel()
         addACButton()
-        addNumberButton()
+        addFirstRow()
     }
     
     private func addNumberLabel() {
@@ -69,18 +79,31 @@ class ViewController: UIViewController {
         ])
     }
     
-    private func addNumberButton() {
-        let numberOne = NumberButton(frame: .zero)
-        numberOne.number = 1
-        self.view.addSubview(numberOne)
-        numberOne.addTarget(self, action: #selector(self.numberButtonTapped), for: .touchUpInside)
-        
+    private func addFirstRow() {
+        self.view.addSubview(firstRow)
         NSLayoutConstraint.activate([
-            numberOne.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
-            numberOne.topAnchor.constraint(equalTo: self.acButton.bottomAnchor, constant: 16),
-            numberOne.heightAnchor.constraint(equalToConstant: 50),
-            numberOne.widthAnchor.constraint(equalToConstant: 50)
+            firstRow.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
+            firstRow.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
+            firstRow.topAnchor.constraint(equalTo: self.acButton.bottomAnchor, constant: 16),
+            firstRow.heightAnchor.constraint(equalToConstant: 50)
         ])
+        let numberSeven = NumberButton(frame: .zero)
+        numberSeven.number = 7
+        numberSeven.addTarget(self, action: #selector(self.numberButtonTapped), for: .touchUpInside)
+        self.view.addSubview(numberSeven)
+        firstRow.addArrangedSubview(numberSeven)
+        
+        let numberEight = NumberButton(frame: .zero)
+        numberEight.number = 8
+        numberEight.addTarget(self, action: #selector(self.numberButtonTapped), for: .touchUpInside)
+        self.view.addSubview(numberEight)
+        firstRow.addArrangedSubview(numberEight)
+        
+        let numberNine = NumberButton(frame: .zero)
+        numberNine.number = 9
+        numberNine.addTarget(self, action: #selector(self.numberButtonTapped), for: .touchUpInside)
+        self.view.addSubview(numberNine)
+        firstRow.addArrangedSubview(numberNine)
     }
     
     @objc func acButtonTapped(sender: UIButton) {
