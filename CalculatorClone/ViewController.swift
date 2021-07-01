@@ -40,16 +40,6 @@ class ViewController: UIViewController {
         return button
     }()
     
-    var firstRow: UIStackView = {
-        let row = UIStackView(frame: .zero)
-        row.translatesAutoresizingMaskIntoConstraints = false
-        row.axis = .horizontal
-        row.distribution = .fillEqually
-        row.spacing = 8
-        
-        return row
-    }()
-    
     override func viewWillAppear(_ animated: Bool) {
         self.view.backgroundColor = UIColor.black
     }

@@ -26,7 +26,7 @@ class NumberButton: UIButton {
     private func setup() {
         self.backgroundColor = .init(red: 80/255, green: 80/255, blue: 80/255, alpha: 1)
         self.setTitleColor(.white, for: .normal)
-        self.layer.cornerRadius = 25
+//        self.layer.cornerRadius = 25
         self.translatesAutoresizingMaskIntoConstraints = false
     }
 }
