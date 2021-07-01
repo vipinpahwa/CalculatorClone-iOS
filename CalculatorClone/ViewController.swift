@@ -61,7 +61,8 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate([
             numberLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
             numberLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
-            numberLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 100)
+            numberLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 100),
+            numberLabel.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     
@@ -71,8 +72,12 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate([
             buttonsStackView.topAnchor.constraint(equalTo: self.numberLabel.bottomAnchor, constant: 16),
             buttonsStackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
-            buttonsStackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16)
+            buttonsStackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
+            buttonsStackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -16)
         ])
+        let zeroRow = createHorizontalStack(with: ["AC"])
+        buttonsStackView.addArrangedSubview(zeroRow)
+        
         let firstRow = createHorizontalStack(with: ["7","8","9"])
         buttonsStackView.addArrangedSubview(firstRow)
         
@@ -90,12 +95,15 @@ class ViewController: UIViewController {
         horizontalStackView.spacing = 8
         horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
         for buttonLabel in buttonLabels {
-            let button = NumberButton(frame: .zero)
-            button.addTarget(self, action: #selector(self.numberButtonTapped), for: .touchUpInside)
             if let number = Int(buttonLabel) {
+                let button = NumberButton(frame: .zero)
                 button.number = number
+                button.addTarget(self, action: #selector(self.numberButtonTapped), for: .touchUpInside)
+                horizontalStackView.addArrangedSubview(button)
+            } else {
+                acButton.addTarget(self, action: #selector(self.acButtonTapped), for: .touchUpInside)
+                horizontalStackView.addArrangedSubview(acButton)
             }
-            horizontalStackView.addArrangedSubview(button)
         }
         
         return horizontalStackView
