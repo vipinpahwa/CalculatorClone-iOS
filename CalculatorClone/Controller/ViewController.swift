@@ -71,13 +71,13 @@ class ViewController: UIViewController {
         let zeroRow = createHorizontalStack(with: ["AC"])
         buttonsStackView.addArrangedSubview(zeroRow)
         
-        let firstRow = createHorizontalStack(with: ["7","8","9"])
+        let firstRow = createHorizontalStack(with: ["7","8","9","x"])
         buttonsStackView.addArrangedSubview(firstRow)
         
-        let secondRow = createHorizontalStack(with: ["4","5","6"])
+        let secondRow = createHorizontalStack(with: ["4","5","6","-"])
         buttonsStackView.addArrangedSubview(secondRow)
         
-        let thirdRow = createHorizontalStack(with: ["1","2","3"])
+        let thirdRow = createHorizontalStack(with: ["1","2","3","+"])
         buttonsStackView.addArrangedSubview(thirdRow)
     }
     
