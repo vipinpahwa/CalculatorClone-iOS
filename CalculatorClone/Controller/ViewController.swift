@@ -8,6 +8,8 @@
 import UIKit
 
 class ViewController: UIViewController {
+    var calculatorBackend = CalculatorBackend()
+    
     var numberLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.numberOfLines = 1
@@ -47,6 +49,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        calculatorBackend.delegate = self
         setupSubviews()
     }
     
@@ -127,15 +130,13 @@ class ViewController: UIViewController {
     }
     
     @objc func numberButtonTapped(sender: UIButton) {
-        guard let currentNumberLabel = numberLabel.text,
-              let numberPressed = sender.currentTitle,
-              currentNumberLabel.count <= 8 else {
-            return
-        }
-        if currentNumberLabel == "0" {
-            numberLabel.text = numberPressed
-        } else {
-            numberLabel.text = "\(currentNumberLabel)\(numberPressed)"
-        }
+        guard let numberPressed = sender.currentTitle else { return }
+        self.calculatorBackend.buttonPressed(buttonLabel: numberPressed)
+    }
+}
+
+extension ViewController: CalculatorBackendDelegate {
+    func updateNumberLabel(numberToBeDisplayed: String) {
+        self.numberLabel.text = numberToBeDisplayed
     }
 }
