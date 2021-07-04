@@ -101,10 +101,10 @@ class ViewController: UIViewController {
             if let number = Int(buttonLabel) {
                 let button = NumberButton(frame: .zero)
                 button.number = number
-                button.addTarget(self, action: #selector(self.numberButtonTapped), for: .touchUpInside)
+                button.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
                 horizontalStackView.addArrangedSubview(button)
             } else {
-                acButton.addTarget(self, action: #selector(self.acButtonTapped), for: .touchUpInside)
+                acButton.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
                 horizontalStackView.addArrangedSubview(acButton)
             }
         }
@@ -112,24 +112,7 @@ class ViewController: UIViewController {
         return horizontalStackView
     }
     
-    private func addACButton() {
-        self.view.addSubview(acButton)
-        acButton.layer.cornerRadius = 25
-        acButton.addTarget(self, action: #selector(self.acButtonTapped), for: .touchUpInside)
-        
-        NSLayoutConstraint.activate([
-            acButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
-            acButton.topAnchor.constraint(equalTo: self.numberLabel.bottomAnchor, constant: 20),
-            acButton.heightAnchor.constraint(equalToConstant: 50),
-            acButton.widthAnchor.constraint(equalToConstant: 50)
-        ])
-    }
-    
-    @objc func acButtonTapped(sender: UIButton) {
-        numberLabel.text = "0"
-    }
-    
-    @objc func numberButtonTapped(sender: UIButton) {
+    @objc func buttonTapped(sender: UIButton) {
         guard let numberPressed = sender.currentTitle else { return }
         self.calculatorBackend.buttonPressed(buttonLabel: numberPressed)
     }

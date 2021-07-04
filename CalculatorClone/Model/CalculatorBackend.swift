@@ -23,6 +23,8 @@ struct CalculatorBackend {
         if String(numberDisplayed).count <= 9,
            let numberPressed = Int(buttonLabel) {
             numberDisplayed = numberDisplayed * 10 + numberPressed
+        } else {
+            numberDisplayed = 0
         }
     }
 }
