@@ -8,24 +8,35 @@
 import Foundation
 import UIKit
 
-class NumberButton: UIButton {
-    var number: Int = 0 {
+class CalculatorButton: UIButton {
+    var label: String = "0" {
         didSet {
-            self.setTitle("\(number)", for: .normal)
+            self.setTitle(label, for: .normal)
+            if Int(label) != nil {
+                setupForNumber()
+            } else {
+                setupForACButton()
+            }
         }
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
+        setupForNumber()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setup() {
+    private func setupForNumber() {
         self.backgroundColor = .init(red: 80/255, green: 80/255, blue: 80/255, alpha: 1)
         self.setTitleColor(.white, for: .normal)
+        self.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private func setupForACButton() {
+        self.backgroundColor = .lightGray
+        self.setTitleColor(.black, for: .normal)
         self.translatesAutoresizingMaskIntoConstraints = false
     }
 }

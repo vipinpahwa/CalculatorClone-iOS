@@ -32,16 +32,6 @@ class ViewController: UIViewController {
         return stackView
     }()
     
-    var acButton: UIButton = {
-        let button = UIButton(frame: .zero)
-        button.backgroundColor = .lightGray
-        button.setTitle("AC", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        return button
-    }()
-    
     override func viewWillAppear(_ animated: Bool) {
         self.view.backgroundColor = UIColor.black
     }
@@ -98,15 +88,10 @@ class ViewController: UIViewController {
         horizontalStackView.spacing = 8
         horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
         for buttonLabel in buttonLabels {
-            if let number = Int(buttonLabel) {
-                let button = NumberButton(frame: .zero)
-                button.number = number
-                button.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
-                horizontalStackView.addArrangedSubview(button)
-            } else {
-                acButton.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
-                horizontalStackView.addArrangedSubview(acButton)
-            }
+            let button =  CalculatorButton(frame: .zero)
+            button.label = buttonLabel
+            button.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
+            horizontalStackView.addArrangedSubview(button)
         }
         
         return horizontalStackView
