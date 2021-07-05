@@ -79,6 +79,9 @@ class ViewController: UIViewController {
         
         let thirdRow = createHorizontalStack(with: ["1","2","3","+"])
         buttonsStackView.addArrangedSubview(thirdRow)
+        
+        let fourthRow = createHorizontalStack(with: ["="])
+        buttonsStackView.addArrangedSubview(fourthRow)
     }
     
     private func createHorizontalStack(with buttonLabels: [String]) -> UIStackView {

@@ -21,11 +21,17 @@ struct CalculatorBackend {
     
     var shouldInputNewNumber: Bool = false
     
+    var binaryOperator: BinaryOperator?
+    
+    var result: Int = 0
+    
     mutating func buttonPressed(buttonLabel: String) {
         if let numberPressed = Int(buttonLabel) {
             handleForNumber(numberPressed: numberPressed)
         } else if let binaryOperator = BinaryOperator(rawValue: buttonLabel) {
             handleForBinaryOperator(binaryOperator: binaryOperator)
+        } else if buttonLabel == "=" {
+            handleForEqualOperator()
         } else {
             numberDisplayed = 0
         }
@@ -44,5 +50,15 @@ struct CalculatorBackend {
     
     private mutating func handleForBinaryOperator(binaryOperator: BinaryOperator) {
         shouldInputNewNumber = true
+        self.binaryOperator = binaryOperator
+        self.result = numberDisplayed
+    }
+    
+    private mutating func handleForEqualOperator() {
+        if let binaryOperator = self.binaryOperator {
+            self.result = binaryOperator.performOperation(firstOperand: result, secondOperand: numberDisplayed)
+            self.numberDisplayed = result
+            self.binaryOperator = nil
+        }
     }
 }
