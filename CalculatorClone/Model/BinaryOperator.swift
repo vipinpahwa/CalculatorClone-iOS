@@ -11,7 +11,7 @@ enum BinaryOperator: String {
     case add = "+"
     case subtract = "-"
     case multiply = "x"
-    case divide = "/"
+    case divide = "÷"
     
     func performOperation(firstOperand: Int, secondOperand: Int) -> Int {
         switch self {
