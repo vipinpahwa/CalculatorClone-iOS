@@ -49,9 +49,13 @@ struct CalculatorBackend {
     }
     
     private mutating func handleForBinaryOperator(binaryOperator: BinaryOperator) {
+        if let binaryOperator = self.binaryOperator {
+            self.result = binaryOperator.performOperation(firstOperand: result, secondOperand: numberDisplayed)
+        } else {
+            self.result = numberDisplayed
+        }
         shouldInputNewNumber = true
         self.binaryOperator = binaryOperator
-        self.result = numberDisplayed
     }
     
     private mutating func handleForEqualOperator() {
