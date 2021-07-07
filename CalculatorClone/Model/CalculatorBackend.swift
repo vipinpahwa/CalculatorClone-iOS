@@ -11,13 +11,16 @@ protocol CalculatorBackendDelegate {
     func updateNumberLabel(label: String)
 }
 struct CalculatorBackend {
-    var numberToBeDisplayed: Int = 0
+    var numberToBeDisplayed: Int = 0 {
+        didSet {
+            delegate?.updateNumberLabel(label: String(numberToBeDisplayed))
+        }
+    }
     var delegate: CalculatorBackendDelegate?
     
     mutating func buttonPressed(buttonLabel: String) {
         guard buttonLabel.count == 1,
               let numberPressed = Int(buttonLabel) else { return }
         numberToBeDisplayed = numberToBeDisplayed * 10 + numberPressed
-        delegate?.updateNumberLabel(label: buttonLabel)
     }
 }
