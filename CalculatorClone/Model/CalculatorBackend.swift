@@ -11,6 +11,6 @@ struct CalculatorBackend {
     var numberToBeDisplayed: Int = 0
     
     mutating func buttonPressed(buttonLabel: String) {
-        numberToBeDisplayed = Int(buttonLabel) ?? 1
+        numberToBeDisplayed = Int(buttonLabel) ?? 0
     }
 }

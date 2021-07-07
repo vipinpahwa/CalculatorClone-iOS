@@ -22,4 +22,10 @@ class CalculatorBackendTests: XCTestCase {
         
         XCTAssertEqual(calculatorBackend.numberToBeDisplayed, 1)
     }
+    
+    func test_buttonPressed_ButtonLabelIsPlus_NumberToBeDisplayedShouldBeZero() {
+        calculatorBackend.buttonPressed(buttonLabel: "+")
+        
+        XCTAssertEqual(calculatorBackend.numberToBeDisplayed, 0)
+    }
 }
