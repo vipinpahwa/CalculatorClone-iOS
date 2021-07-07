@@ -7,62 +7,9 @@
 
 import Foundation
 
-protocol CalculatorBackendDelegate {
-    func updateNumberLabel(numberToBeDisplayed: String)
-}
-
 struct CalculatorBackend {
-    var delegate: CalculatorBackendDelegate?
-    var numberDisplayed: Int = 0 {
-        didSet {
-            delegate?.updateNumberLabel(numberToBeDisplayed: String(numberDisplayed))
-        }
-    }
-    
-    var shouldInputNewNumber: Bool = false
-    
-    var binaryOperator: BinaryOperator?
-    
-    var result: Int = 0
+    var numberToBeDisplayed: Int = 0
     
     mutating func buttonPressed(buttonLabel: String) {
-        if let numberPressed = Int(buttonLabel) {
-            handleForNumber(numberPressed: numberPressed)
-        } else if let binaryOperator = BinaryOperator(rawValue: buttonLabel) {
-            handleForBinaryOperator(binaryOperator: binaryOperator)
-        } else if buttonLabel == "=" {
-            handleForEqualOperator()
-        } else {
-            numberDisplayed = 0
-        }
-    }
-    
-    private mutating func handleForNumber(numberPressed: Int) {
-        if String(numberDisplayed).count <= 9 {
-            if shouldInputNewNumber {
-                numberDisplayed = numberPressed
-                shouldInputNewNumber = false
-            } else {
-                numberDisplayed = numberDisplayed * 10 + numberPressed
-            }
-        }
-    }
-    
-    private mutating func handleForBinaryOperator(binaryOperator: BinaryOperator) {
-        if let binaryOperator = self.binaryOperator {
-            self.result = binaryOperator.performOperation(firstOperand: result, secondOperand: numberDisplayed)
-        } else {
-            self.result = numberDisplayed
-        }
-        shouldInputNewNumber = true
-        self.binaryOperator = binaryOperator
-    }
-    
-    private mutating func handleForEqualOperator() {
-        if let binaryOperator = self.binaryOperator {
-            self.result = binaryOperator.performOperation(firstOperand: result, secondOperand: numberDisplayed)
-            self.numberDisplayed = result
-            self.binaryOperator = nil
-        }
     }
 }
