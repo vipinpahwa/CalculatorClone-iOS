@@ -39,6 +39,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        calculatorBackend.delegate = self
         setupSubviews()
     }
     
@@ -102,5 +103,11 @@ class ViewController: UIViewController {
     @objc func buttonTapped(sender: UIButton) {
         guard let numberPressed = sender.currentTitle else { return }
         self.calculatorBackend.buttonPressed(buttonLabel: numberPressed)
+    }
+}
+
+extension ViewController: CalculatorBackendDelegate {
+    func updateNumberLabel(label: String) {
+        self.numberLabel.text = label
     }
 }

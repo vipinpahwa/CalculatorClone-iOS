@@ -10,6 +10,10 @@ import XCTest
 
 class CalculatorBackendTests: XCTestCase {
     var calculatorBackend = CalculatorBackend()
+    let mockDelegate = MockCalculatorBackendDelegate()
+    override func setUp() {
+        calculatorBackend.delegate = mockDelegate
+    }
     
     func test_buttonPressed_ButtonLabelIsZero_NumberToBeDisplayedShouldBeZero() {
         calculatorBackend.buttonPressed(buttonLabel: "0")
@@ -40,5 +44,18 @@ class CalculatorBackendTests: XCTestCase {
         calculatorBackend.buttonPressed(buttonLabel: "0")
         
         XCTAssertEqual(calculatorBackend.numberToBeDisplayed, 10)
+    }
+    
+    func test_buttonPressed_ButtonLabelsPressedIsZero_UpdateNumberLabelCalledWithZero() {
+        calculatorBackend.buttonPressed(buttonLabel: "0")
+        
+        XCTAssertEqual(mockDelegate.updateNumberLabelCalledWith, "0")
+    }
+}
+
+class MockCalculatorBackendDelegate: CalculatorBackendDelegate {
+    var updateNumberLabelCalledWith: String = ""
+    func updateNumberLabel(label: String) {
+        updateNumberLabelCalledWith = label
     }
 }
