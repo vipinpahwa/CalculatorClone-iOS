@@ -14,7 +14,7 @@ class CalculatorButton: UIButton {
             self.setTitle(label, for: .normal)
             if Int(label) != nil {
                 setupForNumber()
-            } else if BinaryOperator(rawValue: label) != nil {
+            } else if isBinaryOperator() {
                 setupForBinaryOperator()
             } else {
                 setupForACButton()

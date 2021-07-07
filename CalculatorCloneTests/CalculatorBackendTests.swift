@@ -11,9 +11,15 @@ import XCTest
 class CalculatorBackendTests: XCTestCase {
     var calculatorBackend = CalculatorBackend()
     
-    func test_buttonPressed_ButtonLabelIsZero_NumberToBeDisplayedShouldBeZro() {
+    func test_buttonPressed_ButtonLabelIsZero_NumberToBeDisplayedShouldBeZero() {
         calculatorBackend.buttonPressed(buttonLabel: "0")
         
         XCTAssertEqual(calculatorBackend.numberToBeDisplayed, 0)
+    }
+    
+    func test_buttonPressed_ButtonLabelIsOne_NumberToBeDisplayedShouldBeOne() {
+        calculatorBackend.buttonPressed(buttonLabel: "1")
+        
+        XCTAssertEqual(calculatorBackend.numberToBeDisplayed, 1)
     }
 }
