@@ -63,6 +63,12 @@ class CalculatorBackendTests: XCTestCase {
         
         XCTAssertEqual(mockDelegate.updateNumberLabelCalledWith, "")
     }
+    
+    func test_buttonPressed_ButtonLabelsPressedIsDivide_UpdateNumberLabelNotCalled() {
+        calculatorBackend.buttonPressed(buttonLabel: "÷")
+        
+        XCTAssertEqual(mockDelegate.updateNumberLabelCalledWith, "")
+    }
 }
 
 class MockCalculatorBackendDelegate: CalculatorBackendDelegate {
