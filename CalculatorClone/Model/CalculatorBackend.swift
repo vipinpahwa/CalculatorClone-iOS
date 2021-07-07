@@ -11,7 +11,8 @@ struct CalculatorBackend {
     var numberToBeDisplayed: Int = 0
     
     mutating func buttonPressed(buttonLabel: String) {
-        guard buttonLabel.count == 1 else { return }
-        numberToBeDisplayed = Int(buttonLabel) ?? 0
+        guard buttonLabel.count == 1,
+              let numberPressed = Int(buttonLabel) else { return }
+        numberToBeDisplayed = numberToBeDisplayed * 10 + numberPressed
     }
 }
