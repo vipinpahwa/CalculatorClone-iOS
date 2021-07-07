@@ -57,6 +57,12 @@ class CalculatorBackendTests: XCTestCase {
         
         XCTAssertEqual(mockDelegate.updateNumberLabelCalledWith, "")
     }
+    
+    func test_buttonPressed_ButtonLabelsPressedIsMinus_UpdateNumberLabelNotCalled() {
+        calculatorBackend.buttonPressed(buttonLabel: "-")
+        
+        XCTAssertEqual(mockDelegate.updateNumberLabelCalledWith, "")
+    }
 }
 
 class MockCalculatorBackendDelegate: CalculatorBackendDelegate {

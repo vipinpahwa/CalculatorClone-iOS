@@ -15,7 +15,7 @@ struct CalculatorBackend {
     var delegate: CalculatorBackendDelegate?
     
     mutating func buttonPressed(buttonLabel: String) {
-        if buttonLabel != "+" {
+        if buttonLabel != "+" && buttonLabel != "-" {
             delegate?.updateNumberLabel(label: buttonLabel)
         }
         guard buttonLabel.count == 1,
