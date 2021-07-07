@@ -46,6 +46,14 @@ class CalculatorBackendTests: XCTestCase {
         XCTAssertEqual(calculatorBackend.numberToBeDisplayed, 10)
     }
     
+    func test_buttonPressed_ButtonLabelsPressedAreTenTimesNine_NumberToBeDisplayedShouldBeNineTimesNine() {
+        for _ in 1...10 {
+            calculatorBackend.buttonPressed(buttonLabel: "9")
+        }
+        
+        XCTAssertEqual(calculatorBackend.numberToBeDisplayed, 999999999)
+    }
+    
     func test_buttonPressed_ButtonLabelPressedIsZero_UpdateNumberLabelCalledWithZero() {
         calculatorBackend.buttonPressed(buttonLabel: "0")
         

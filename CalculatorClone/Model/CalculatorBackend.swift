@@ -20,7 +20,8 @@ struct CalculatorBackend {
     
     mutating func buttonPressed(buttonLabel: String) {
         guard buttonLabel.count == 1,
-              let numberPressed = Int(buttonLabel) else { return }
+              let numberPressed = Int(buttonLabel),
+              numberToBeDisplayed != 999999999 else { return }
         numberToBeDisplayed = numberToBeDisplayed * 10 + numberPressed
     }
 }
