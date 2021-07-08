@@ -37,8 +37,7 @@ struct CalculatorBackend {
     }
     
     private func handleForPointOperator() {
-        delegate?.updateNumberLabel(label: "0.")
-        
+        delegate?.updateNumberLabel(label: "\(numberToBeDisplayed).")        
     }
     
     private mutating func handleForACOperator() {
