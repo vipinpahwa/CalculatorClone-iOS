@@ -11,7 +11,7 @@ protocol CalculatorBackendDelegate {
     func updateNumberLabel(label: String)
 }
 struct CalculatorBackend {
-    var numberToBeDisplayed: Int = 0 {
+    private var numberToBeDisplayed: Int = 0 {
         didSet {
             delegate?.updateNumberLabel(label: String(numberToBeDisplayed))
         }
