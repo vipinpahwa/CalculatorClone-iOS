@@ -41,6 +41,9 @@ struct CalculatorBackend {
     }
     
     private mutating func handleForPointOperator() {
+        guard !numberToBeDisplayed.contains(".") else {
+            return
+        }
         numberToBeDisplayed = numberToBeDisplayed + "."
     }
     
