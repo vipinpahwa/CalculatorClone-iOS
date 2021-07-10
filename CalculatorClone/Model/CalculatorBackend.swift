@@ -28,6 +28,8 @@ struct CalculatorBackend {
             handleForPointOperator()
         } else if BinaryOperator(rawValue: buttonLabel) != nil {
             shouldInputNewNumber = true
+        } else if buttonLabel == "=" {
+            numberToBeDisplayed = "7"
         } else {
             return
         }
