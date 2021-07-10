@@ -26,7 +26,7 @@ struct CalculatorBackend {
             handleForACOperator()
         } else if buttonLabel == "." {
             handleForPointOperator()
-        } else if buttonLabel == "+" {
+        } else if buttonLabel == "+" || buttonLabel == "-" || buttonLabel == "x" {
             shouldInputNewNumber = true
         } else {
             return
