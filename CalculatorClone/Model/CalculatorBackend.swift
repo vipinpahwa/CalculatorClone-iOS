@@ -26,7 +26,7 @@ struct CalculatorBackend {
             handleForACOperator()
         } else if buttonLabel == "." {
             handleForPointOperator()
-        } else if buttonLabel == "+" || buttonLabel == "-" || buttonLabel == "x" {
+        } else if BinaryOperator(rawValue: buttonLabel) != nil {
             shouldInputNewNumber = true
         } else {
             return

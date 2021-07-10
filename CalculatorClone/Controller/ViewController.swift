@@ -68,7 +68,7 @@ class ViewController: UIViewController {
             buttonsStackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
             buttonsStackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -16)
         ])
-        let zeroRow = createHorizontalStack(with: ["AC"])
+        let zeroRow = createHorizontalStack(with: ["AC","±","%","÷"])
         buttonsStackView.addArrangedSubview(zeroRow)
         
         let firstRow = createHorizontalStack(with: ["7","8","9","x"])

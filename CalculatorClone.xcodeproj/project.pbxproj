@@ -16,6 +16,7 @@
 		CCA6E6C426899B68008217C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCA6E6C226899B68008217C9 /* Main.storyboard */; };
 		CCA6E6C626899B69008217C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCA6E6C526899B69008217C9 /* Assets.xcassets */; };
 		CCA6E6C926899B69008217C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCA6E6C726899B69008217C9 /* LaunchScreen.storyboard */; };
+		CCFC8979269A0859000CDB23 /* BinaryOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFC8978269A0859000CDB23 /* BinaryOperator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		CCA6E6C526899B69008217C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CCA6E6C826899B69008217C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CCA6E6CA26899B69008217C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCFC8978269A0859000CDB23 /* BinaryOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryOperator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				CC58172326919D78004AB6FA /* CalculatorBackend.swift */,
+				CCFC8978269A0859000CDB23 /* BinaryOperator.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 			files = (
 				CCA6E6C126899B68008217C9 /* ViewController.swift in Sources */,
 				CCA6E6BD26899B68008217C9 /* AppDelegate.swift in Sources */,
+				CCFC8979269A0859000CDB23 /* BinaryOperator.swift in Sources */,
 				CC300E2B268B88A600F799D4 /* CalculatorButton.swift in Sources */,
 				CCA6E6BF26899B68008217C9 /* SceneDelegate.swift in Sources */,
 				CC58172426919D78004AB6FA /* CalculatorBackend.swift in Sources */,
