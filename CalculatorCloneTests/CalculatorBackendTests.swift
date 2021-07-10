@@ -142,6 +142,14 @@ class CalculatorBackendTests: XCTestCase {
         calculatorBackend.buttonPressed(buttonLabel: "=")
         XCTAssertEqual(mockDelegate.updateNumberLabelCalledWith, "7")
     }
+    
+    func test_buttonPressed_ButtonLabelsPressedAreThreePlusFiveThenEqual_UpdateNumberLabelCalledWithEight() {
+        calculatorBackend.buttonPressed(buttonLabel: "3")
+        calculatorBackend.buttonPressed(buttonLabel: "+")
+        calculatorBackend.buttonPressed(buttonLabel: "5")
+        calculatorBackend.buttonPressed(buttonLabel: "=")
+        XCTAssertEqual(mockDelegate.updateNumberLabelCalledWith, "8")
+    }
 }
 
 class MockCalculatorBackendDelegate: CalculatorBackendDelegate {

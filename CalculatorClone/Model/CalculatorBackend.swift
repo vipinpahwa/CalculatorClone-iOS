@@ -17,6 +17,7 @@ struct CalculatorBackend {
         }
     }
     private var shouldInputNewNumber: Bool = false
+    private var result: Int = 0
     var delegate: CalculatorBackendDelegate?
     
     mutating func buttonPressed(buttonLabel: String) {
@@ -28,8 +29,10 @@ struct CalculatorBackend {
             handleForPointOperator()
         } else if BinaryOperator(rawValue: buttonLabel) != nil {
             shouldInputNewNumber = true
+            result = Int(numberToBeDisplayed) ?? 0
         } else if buttonLabel == "=" {
-            numberToBeDisplayed = "7"
+            result = result + (Int(numberToBeDisplayed) ?? 0)
+            numberToBeDisplayed = String(result)
         } else {
             return
         }
