@@ -18,6 +18,7 @@ struct CalculatorBackend {
     }
     private var shouldInputNewNumber: Bool = false
     private var result: Double = 0
+    private var currentBinaryOperator: BinaryOperator?
     var delegate: CalculatorBackendDelegate?
     
     mutating func buttonPressed(buttonLabel: String) {
@@ -27,11 +28,22 @@ struct CalculatorBackend {
             handleForACOperator()
         } else if buttonLabel == "." {
             handleForPointOperator()
-        } else if BinaryOperator(rawValue: buttonLabel) != nil {
+        } else if let binaryOperatorPressed = BinaryOperator(rawValue: buttonLabel) {
             shouldInputNewNumber = true
             result = Double(numberToBeDisplayed) ?? 0
+            currentBinaryOperator = binaryOperatorPressed
         } else if buttonLabel == "=" {
-            result = result + (Double(numberToBeDisplayed) ?? 0)
+            guard let currentBinaryOperator = currentBinaryOperator else {
+                return
+            }
+            switch currentBinaryOperator {
+            case .add:
+                result = result + (Double(numberToBeDisplayed) ?? 0)
+            case .subtract:
+                result = result - (Double(numberToBeDisplayed) ?? 0)
+            default:
+                break
+            }
             let fractionalPart = result - Double(Int(result))
             if fractionalPart == 0 {
                 numberToBeDisplayed = String(format: "%.0f", result)
