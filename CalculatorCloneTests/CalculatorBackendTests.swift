@@ -168,6 +168,14 @@ class CalculatorBackendTests: XCTestCase {
         calculatorBackend.buttonPressed(buttonLabel: "=")
         XCTAssertEqual(mockDelegate.updateNumberLabelCalledWith, "2")
     }
+    
+    func test_buttonPressed_ButtonLabelsPressedAreThreeMultiplyTwoThenEqual_UpdateNumberLabelCalledWithSix() {
+        calculatorBackend.buttonPressed(buttonLabel: "3")
+        calculatorBackend.buttonPressed(buttonLabel: "x")
+        calculatorBackend.buttonPressed(buttonLabel: "2")
+        calculatorBackend.buttonPressed(buttonLabel: "=")
+        XCTAssertEqual(mockDelegate.updateNumberLabelCalledWith, "6")
+    }
 }
 
 class MockCalculatorBackendDelegate: CalculatorBackendDelegate {
