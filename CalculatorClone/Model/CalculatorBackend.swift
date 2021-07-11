@@ -43,6 +43,8 @@ struct CalculatorBackend {
                 result = result - (Double(numberToBeDisplayed) ?? 0)
             case .multiply:
                 result = result * (Double(numberToBeDisplayed) ?? 0)
+            case .divide:
+                result = result / (Double(numberToBeDisplayed) ?? 0)
             default:
                 break
             }
