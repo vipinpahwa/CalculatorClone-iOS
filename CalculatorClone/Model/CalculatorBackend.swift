@@ -30,27 +30,17 @@ struct CalculatorBackend {
             handleForPointOperator()
         } else if let binaryOperatorPressed = BinaryOperator(rawValue: buttonLabel) {
             shouldInputNewNumber = true
-            switch binaryOperatorPressed {
-            case .add:
-                result = result + (Double(numberToBeDisplayed) ?? 0)
-            default:
-                result = Double(numberToBeDisplayed) ?? 0
+            if let currentBinaryOperator = currentBinaryOperator {
+                result = currentBinaryOperator.performOperation(firstOperand: result, secondOperand: (Double(numberToBeDisplayed) ?? 0))
+            } else {
+                result = (Double(numberToBeDisplayed) ?? 0)
             }
             currentBinaryOperator = binaryOperatorPressed
         } else if buttonLabel == "=" {
             guard let currentBinaryOperator = currentBinaryOperator else {
                 return
             }
-            switch currentBinaryOperator {
-            case .add:
-                result = result + (Double(numberToBeDisplayed) ?? 0)
-            case .subtract:
-                result = result - (Double(numberToBeDisplayed) ?? 0)
-            case .multiply:
-                result = result * (Double(numberToBeDisplayed) ?? 0)
-            case .divide:
-                result = result / (Double(numberToBeDisplayed) ?? 0)
-            }
+            result = currentBinaryOperator.performOperation(firstOperand: result, secondOperand: (Double(numberToBeDisplayed) ?? 0))
             let fractionalPart = result - Double(Int(result))
             if fractionalPart == 0 {
                 numberToBeDisplayed = String(format: "%.0f", result)
