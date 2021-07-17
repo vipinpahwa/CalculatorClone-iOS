@@ -76,5 +76,6 @@ struct CalculatorBackend {
     
     private mutating func handleForACOperator() {
         numberToBeDisplayed = "0"
+        result = 0
     }
 }
